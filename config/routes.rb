@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :organisations do
       resource :contact_details
-      resources :member, only: [:index, :create, :destroy]
+      resources :memberships, only: [:create, :destroy]
     end
     resources :people do
       resource :contact_details

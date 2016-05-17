@@ -1,3 +1,6 @@
 class Person < ActiveRecord::Base
-  belongs_to :organisation
+  has_many :memberships, dependent: :destroy
+  belongs_to :organisation, through: :memberships
+
+  has_one :contact_details, as: :contactable
 end
