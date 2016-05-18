@@ -13,9 +13,9 @@ class CreateTables < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :memberships do |t|
+    create_table :organisation_memberships do |t|
       t.references :organisation, index: true
-      t.references :people, index: true
+      t.references :person, index: true
 
       t.timestamps null: false
     end

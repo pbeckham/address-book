@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::OrganisationsController do
+RSpec.describe OrganisationsController do
 
   let(:organisation_hash) { { organisation: { name: "Administrate" }}  }
 

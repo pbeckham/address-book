@@ -1,0 +1,8 @@
+h1 People
+
+- if @people.empty?
+  = link_to "Add someone", new_person_path
+- else 
+  - @people.each do |person|
+    tr
+    td.name= link_to person.full_name, person_path(person)

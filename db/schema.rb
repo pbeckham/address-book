@@ -30,15 +30,15 @@ ActiveRecord::Schema.define(version: 20160517191826) do
 
   add_index "contact_details", ["contactable_type", "contactable_id"], name: "index_contact_details_on_contactable_type_and_contactable_id"
 
-  create_table "memberships", force: :cascade do |t|
+  create_table "organisation_memberships", force: :cascade do |t|
     t.integer  "organisation_id"
-    t.integer  "people_id"
+    t.integer  "person_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
-  add_index "memberships", ["organisation_id"], name: "index_memberships_on_organisation_id"
-  add_index "memberships", ["people_id"], name: "index_memberships_on_people_id"
+  add_index "organisation_memberships", ["organisation_id"], name: "index_organisation_memberships_on_organisation_id"
+  add_index "organisation_memberships", ["person_id"], name: "index_organisation_memberships_on_person_id"
 
   create_table "organisations", force: :cascade do |t|
     t.string   "name"

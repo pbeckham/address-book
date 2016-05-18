@@ -1,0 +1,13 @@
+= form_for @person, html: { class: 'form-inline' } do |f|
+  .form_group
+    = f.label :first_name
+    = f.text_field :first_name, placeholder: "Jane", class: 'form-control'
+  .form_group
+    = f.label :last_name
+    = f.text_field :last_name, placeholder: "Doe", class: 'form-control'
+  .form_group
+    = f.fields_for :contact_details, @person.contact_details do |builder|
+      .form_group
+        = builder.label :email
+        = builder.email_field :email, class: 'form-control'
+  = f.submit nil, class: 'btn btn-default'
