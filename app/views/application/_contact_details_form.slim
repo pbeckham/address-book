@@ -1,0 +1,17 @@
+.form_group
+ = f.label :email, class: 'col-sm-2'
+ .col-sm-10
+   = f.email_field :email, class: 'form-control'
+.form_group
+ = f.label :telephone, class: 'col-sm-2'
+ .col-sm-10
+   = f.telephone_field :telephone, class: 'form-control'
+.form_group
+ = f.label :address, class: 'col-sm-2'
+ .col-sm-10
+   = f.text_field :address_line_1, class: 'form-control', placeholder: 'House name or number'
+   = f.text_field :address_line_2, class: 'form-control', placeholder: 'Street name'
+   = f.text_field :address_line_3, class: 'form-control'
+   = f.text_field :city, class: 'form-control', placeholder: 'City'
+   = f.text_field :postal_code, class: 'form-control', placeholder: 'Postcode'
+   = f.country_select :country_code, class: 'form-control'

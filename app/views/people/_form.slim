@@ -1,13 +1,14 @@
-= form_for @person, html: { class: 'form-inline' } do |f|
+= form_for @person, html: { class: 'form-horizontal' } do |f|
   .form_group
-    = f.label :first_name
-    = f.text_field :first_name, placeholder: "Jane", class: 'form-control'
-  .form_group
-    = f.label :last_name
-    = f.text_field :last_name, placeholder: "Doe", class: 'form-control'
+    = f.label :name, class: 'col-sm-2'
+    .col-sm-5
+      = f.text_field :first_name, placeholder: "Jane", class: 'form-control'
+    .col-sm-5
+      = f.text_field :last_name, placeholder: "Doe", class: 'form-control'
   .form_group
     = f.fields_for :contact_details, @person.contact_details do |builder|
-      .form_group
-        = builder.label :email
-        = builder.email_field :email, class: 'form-control'
-  = f.submit nil, class: 'btn btn-default'
+      = render 'contact_details_form', f: builder
+
+  .form_group
+    .col-sm-10
+      = f.submit nil, class: 'btn btn-default'

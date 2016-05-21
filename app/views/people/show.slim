@@ -1,3 +1,5 @@
 h1= @person.full_name
 
+= render 'contact_details', details: @person.contact_details
+
 = link_to :edit, edit_person_path(@person)

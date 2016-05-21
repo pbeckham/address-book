@@ -1,8 +1,20 @@
-h1 People
+.panel.panel-default
+  .panel-heading People
 
-- if @people.empty?
-  = link_to "Add someone", new_person_path
-- else 
-  - @people.each do |person|
-    tr
-    td.name= link_to person.full_name, person_path(person)
+  table.table
+    - if @people.empty?
+      p You have no people yet
+    - else 
+      - @people.each do |person|
+        tr
+          td= link_to person.full_name, person_path(person)
+          td.action
+            = link_to edit_person_path(person) do
+              i.glyphicon.glyphicon-pencil
+          td.action
+            = link_to person_path(person), method: :delete do
+              i.glyphicon.glyphicon-remove
+
+  .panel-footer
+    =link_to "Add Person", new_person_path
+

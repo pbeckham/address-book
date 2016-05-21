@@ -1,0 +1,5 @@
+h1= @organisation.name
+
+= render 'contact_details', details: @organisation.contact_details
+
+= link_to :edit, edit_organisation_path(@organisation)
