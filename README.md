@@ -1,14 +1,15 @@
-# address-book
+Address Book
+====================
 
+A small rails app that allows you to:
+- create/update/delete organisations and people
+- edit their contact details
+- add/remove people from organisations
 
-Organisation
-- has_many :people
-- has_one :contact_detail, 
+Setup
+---------------------
 
-Person
-- has_one  :organisation
-- has_one  :contact_detail, as: :contact
-- has_many :emails
+- git clone
+- bundle install
+- rails s
 
-ContactDetails
-- has_one :contact, polymorphic: true
