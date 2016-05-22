@@ -13,7 +13,7 @@ class OrganisationsController < ApplicationController
     if @organisation.save
       redirect_to @organisation
     else
-      flash[:error] = @organisation.errors.full_messages.to_sentence
+      flash.now[:error] = @organisation.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -31,6 +31,7 @@ class OrganisationsController < ApplicationController
     if @organisation.save
       redirect_to @organisation
     else
+      flash.now[:error] = @organisation.errors.full_messages.to_sentence
       render :edit
     end
   end

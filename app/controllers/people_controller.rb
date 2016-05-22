@@ -17,6 +17,7 @@ class PeopleController < ApplicationController
     if @person.save
       redirect_to @person
     else
+      flash.now[:error] = @person.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -37,6 +38,7 @@ class PeopleController < ApplicationController
     if @person.save
       redirect_to @person
     else
+      flash.now[:error] = @person.errors.full_messages.to_sentence
       render :edit
     end
   end
