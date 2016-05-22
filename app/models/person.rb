@@ -7,6 +7,9 @@ class Person < ActiveRecord::Base
   accepts_nested_attributes_for :contact_details
   accepts_nested_attributes_for :membership
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def full_name
     [first_name, last_name].join(" ")
   end

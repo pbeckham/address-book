@@ -7,12 +7,12 @@ RSpec.describe OrganisationsController do
 
     it "Should create an organisation" do
       expect { post :create, organisation_hash }
-      .to change(Organisation, :count).by(1)
+        .to change(Organisation, :count).by(1)
     end
 
     it "Should create a contact details" do
       expect { post :create, organisation_hash }
-      .to change(ContactDetails, :count).by(1)
+        .to change(ContactDetails, :count).by(1)
     end
 
     it "the contact details should belong to the organisation" do
