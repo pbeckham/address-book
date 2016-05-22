@@ -5,4 +5,8 @@ class Organisation < ActiveRecord::Base
   has_one :contact_details, as: :contactable, dependent: :destroy
 
   accepts_nested_attributes_for :contact_details
+
+  def contact_details
+    super || build_contact_details
+  end
 end

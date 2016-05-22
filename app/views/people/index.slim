@@ -12,9 +12,9 @@
             = link_to edit_person_path(person) do
               i.glyphicon.glyphicon-pencil
           td.action
-            = link_to person_path(person), method: :delete do
+            = link_to person_path(person), method: :delete, data: { confirm: "Are you sure?" } do
               i.glyphicon.glyphicon-remove
 
   .panel-footer
-    =link_to "Add Person", new_person_path
+    =link_to :add, new_person_path
 

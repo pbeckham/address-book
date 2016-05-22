@@ -1,0 +1,13 @@
+h1= "Add person to #{@organisation.name}"
+
+= form_for @membership, html: { class: 'form-horizontal' } do |f|
+  .form_group
+    = f.label :person, class: 'col-sm-2'
+    .col-sm-10
+      = f.select :person_id, people_options
+
+  .form_group
+    .col-sm-10
+      = f.submit nil, class: 'btn btn-default'
+      = link_to :cancel, organisation_path(@organisation), class: 'btn btn-default'
+

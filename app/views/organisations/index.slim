@@ -1,5 +1,5 @@
 .panel.panel-default
-  .panel-heading Organisation
+  .panel-heading Organisations
 
   table.table
     - if @organisations.empty?
@@ -12,9 +12,9 @@
             = link_to edit_organisation_path(organisation) do
               i.glyphicon.glyphicon-pencil
           td.action
-            = link_to organisation_path(organisation), method: :delete do
+            = link_to organisation_path(organisation), method: :delete, data: { confirm: "Are you sure?" } do
               i.glyphicon.glyphicon-remove
 
   .panel-footer
-    =link_to "Add Organisation", new_organisation_path
+    =link_to :add, new_organisation_path
 

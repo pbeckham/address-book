@@ -6,7 +6,6 @@ class OrganisationsController < ApplicationController
 
   def new
     @organisation = Organisation.new
-    @organisation.build_contact_details
   end
 
   def create
@@ -14,24 +13,21 @@ class OrganisationsController < ApplicationController
     if @organisation.save
       redirect_to @organisation
     else
+      flash[:error] = @organisation.errors.full_messages.to_sentence
       render :new
     end
   end
 
   def show
-    @organisation = Organisation.find_by(id: params[:id])
+    org_by_id
   end
 
   def edit
-    @organisation = Organisation.find_by(id: params[:id])
-    if @organisation.contact_details.nil?
-      @organisation.build_contact_details
-    end
+    org_by_id
   end
 
   def update
-    @organisation = Organisation.find_by(id: params[:id])
-    @organisation.update(organisation_params)
+    org_by_id.update(organisation_params)
     if @organisation.save
       redirect_to @organisation
     else
@@ -40,8 +36,7 @@ class OrganisationsController < ApplicationController
   end
 
   def destroy
-    organisation = Organisation.find_by(id: params[:id])
-    if organisation.destroy
+    if org_by_id.destroy
       flash[:success] = "Organisation successfully deleted"
     else
       flash[:error] = "Cannot delete organisation"
@@ -50,6 +45,10 @@ class OrganisationsController < ApplicationController
   end
 
   private
+
+  def org_by_id
+    @organisation = Organisation.find(params[:id])
+  end
 
   def organisation_params
     params.require(:organisation).permit(:name, contact_details_attributes: ContactDetails::ALLOWED_ATTRIBUTES)

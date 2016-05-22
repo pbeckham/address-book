@@ -1,5 +1,22 @@
 h1= @organisation.name
+= link_to :edit, edit_organisation_path(@organisation), class: 'btn btn-default'
+= link_to :delete, organisation_path(@organisation), method: :delete, class: 'btn btn-default', data: { confirm: 'Are you sure?' }
 
 = render 'contact_details', details: @organisation.contact_details
 
-= link_to :edit, edit_organisation_path(@organisation)
+h3 People
+- if @organisation.memberships.any?
+  table.table
+    - @organisation.memberships.includes(:person).each do |membership|
+     tr
+       td=link_to membership.person.full_name, person_path(membership.person)
+       td=link_to organisation_membership_path(@organisation, membership.id), method: :delete, data: { confirm: "Are you sure?" } do
+         .glyphicon.glyphicon-remove
+- else
+  No people in this organisation yet
+
+p
+  = link_to "Add person", new_organisation_membership_path(organisation_id: @organisation.id), class: 'btn btn-default'
+  = link_to "Create person", new_person_path(organisation_id: @organisation.id), class: 'btn btn-default'
+  
+

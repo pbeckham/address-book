@@ -1,5 +1,12 @@
 h1= @person.full_name
+= link_to :edit, edit_person_path(@person), class: 'btn btn-default'
+= link_to :delete, person_path(@person), method: :delete, class: 'btn btn-default', data: { confirm: "Are you sure?" }
 
-= render 'contact_details', details: @person.contact_details
+- if @person.contact_details.persisted?
+  h3 Contact Details
+  = render 'contact_details', details: @person.contact_details
 
-= link_to :edit, edit_person_path(@person)
+- if @person.membership.persisted?
+  h3 Organisation
+  = link_to @person.organisation.name, organisation_path(@person.organisation)
+

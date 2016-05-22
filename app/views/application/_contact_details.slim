@@ -1,12 +1,15 @@
 .panel
   .panel-body
-    .well
-      p= details.email
-      p= details.telephone
-    .well
-      p= details.address_line_1
-      p= details.address_line_2
-      p= details.address_line_3
-      p= details.city
-      p= details.postal_code
-      p= details.country_code
+    .container
+      - { email: "Email", \
+          telephone: "Telephone", \
+          address_line_1: "House name/number", \
+          address_line_2: "Street", \
+          address_link_3: "Area", \
+          city: "City", \
+          postal_code: "Postcode", \
+          country_code: "Country" \
+        }.each do |attr, name|
+        .row
+          .col-sm-3= "#{name}:"
+          .col-sm-5= details[attr]
