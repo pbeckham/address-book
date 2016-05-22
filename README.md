@@ -9,7 +9,11 @@ A small rails app that allows you to:
 Setup
 ---------------------
 
-- git clone
+- git clone https://github.com/pbeckham/address-book.git
+- cd address-book
 - bundle install
+- rake db:create
+- rake db:migrate
 - rails s
+- visit localhost:3000 in your browser
 
